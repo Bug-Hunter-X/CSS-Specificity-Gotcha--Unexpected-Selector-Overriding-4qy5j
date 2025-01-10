@@ -1,0 +1,21 @@
+The following CSS code snippet has an uncommon bug related to the specificity of CSS selectors:
+
+```css
+.container {
+  width: 100px;
+}
+
+#myElement .container {
+  width: 200px;
+}
+
+#myElement .container.anotherClass {
+  width: 150px;
+}
+
+#myElement > .container {
+  width: 250px; /* This rule will be surprisingly overridden */
+}
+```
+
+The `#myElement > .container` selector, while seemingly more specific, will not override `#myElement .container.anotherClass` if an element with those classes is used.
